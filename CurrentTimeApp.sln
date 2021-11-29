@@ -7,8 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrentTimeApp", "CurrentTi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9A2B94F-7E1E-4BE9-8F0F-69D87AC8F6DF}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\actions.yaml = .github\workflows\actions.yaml
 		LICENSE.md = LICENSE.md
 		README.md = README.md
+		versioning.yaml = versioning.yaml
 	EndProjectSection
 EndProject
 Global

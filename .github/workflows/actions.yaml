@@ -1,0 +1,64 @@
+name: actions
+
+on:
+  push:
+    paths-ignore:
+      - README.md
+      - LICENSE.md
+      - 'docs/**'
+  pull_request:
+    paths-ignore:
+      - README.md
+      - LICENSE.md
+      - 'docs/**'
+
+jobs:
+  actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@230611dbd0eb52da1e1f4f7bc8bb0c3a339fc8b7
+        with:
+          fetch-depth: 0
+      - name: Get version
+        id: jjversion
+        uses: jjliggett/jjversion-action@29372acc6baef59f871d78dbe3939ca9494a6f85
+      - name: Display jjversion outputs
+        run: |
+          echo "Major: ${{ steps.jjversion.outputs.major }}"
+          echo "Minor: ${{ steps.jjversion.outputs.minor }}"
+          echo "Patch: ${{ steps.jjversion.outputs.patch }}"
+          echo "MajorMinorPatch: ${{ steps.jjversion.outputs.majorMinorPatch }}"
+          echo "Sha: ${{ steps.jjversion.outputs.sha }}"
+          echo "ShortSha: ${{ steps.jjversion.outputs.shortSha }}"
+      - name: Setup .NET
+        uses: actions/setup-dotnet@499789684c9a0d41c9b3f0d66a785ba17b1d51ab
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+      - name: Publish application
+        run: dotnet publish -c Release -o release
+      - name: Change index.html base href from / to CurrentTimeApp for GitHub Pages
+        run: sed -i 's/<base href="\/"/<base href="\/CurrentTimeApp\/"/g' release/wwwroot/index.html
+      - run: cat release/wwwroot/index.html
+      - name: Add .nojekyll as this is not a Jekyll project, to allow files and folders starting with underscores
+        run: touch release/wwwroot/.nojekyll
+      - run: cp release/wwwroot/index.html release/wwwroot/404.html
+      - name: Upload release.zip
+        uses: actions/upload-artifact@37da8e8d08da8a9370ca3bc9322df4b6c3dc49c3
+        with:
+          name: release
+          path: release/
+      - name: Publish application to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.7
+        if: ${{ github.ref == 'refs/heads/root' }}
+        with:
+          branch: gh-pages
+          folder: release/wwwroot
+          git-config-name: jjliggett
+          git-config-email: 67353173+jjliggett@users.noreply.github.com
