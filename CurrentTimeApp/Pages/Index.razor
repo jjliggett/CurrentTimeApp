@@ -1,0 +1,143 @@
+﻿@page "/"
+@using static System.TimeZoneInfo
+
+<PageTitle>Current Time | Current Time App</PageTitle>
+
+<h1>Current Time</h1>
+
+<p style="width: 80%">According to your computer, the current Universal Time Coordinated (UTC) is @utcNow.ToLongTimeString() on @utcNow.ToLongDateString(). This is also called Universal Time and Universal Coordinated Time, and is equivalent to Greenwich Mean Time (GMT).</p>
+
+<p style="width: 80%">Also according to your computer, the current local time is:</p>
+
+<div style="border: 0.5px solid black; padding: 10px; display: inline-block">
+    <p style="font-size: 2.50em; font-weight: bold; margin: 0px">@currentTime.ToShortTimeString() (@timeZoneName, UTC@(currentTime.ToString("%K")))</p>
+    <p style="font-size: 1.50em; margin: 0px">@currentTime.ToLongDateString()</p>
+    @if (doesDstMessageExist)
+    {
+        <p style="font-size: 1.00em; margin: 0px">@dstMessage</p>
+    }
+</div>
+
+@code {
+    private DateTime utcNow = DateTime.UtcNow;
+    private DateTime currentTime = DateTime.Now;
+    private TimeZoneInfo timeZoneInfo = TimeZoneInfo.Local;
+    private string timeZoneName = DateTime.Now.IsDaylightSavingTime() ? TimeZoneInfo.Local.DaylightName : TimeZoneInfo.Local.StandardName;
+    private bool doesDstMessageExist = false;
+    private string dstMessage = "";
+
+    private System.Timers.Timer? timer;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            timer = new System.Timers.Timer();
+            timer.Interval = 60;
+            timer.Elapsed += (s, e) =>
+            {
+                updateCurrentTime();
+                InvokeAsync(() => StateHasChanged());
+            };
+            timer.AutoReset = true;
+            timer.Enabled = true;
+        }
+
+        base.OnAfterRender(firstRender);
+    }
+
+    private void updateCurrentTime()
+    {
+        var now = DateTime.Now;
+        var (nextTransitionTime, isDaylightSavingsTime) = getNextTransitionTime(TimeZoneInfo.Local, now);
+
+        currentTime = now;
+        utcNow = currentTime.ToUniversalTime();
+
+        if (nextTransitionTime != null)
+        {
+            dstMessage = $"DST will {(isDaylightSavingsTime ? "end" : "start")} on {nextTransitionTime:D} at {nextTransitionTime:t}.";
+            doesDstMessageExist = true;
+        }
+    }
+
+    (DateTime? NextTransitionTime, Boolean IsDaylightSavingTime) getNextTransitionTime(TimeZoneInfo timeZone, DateTime localDateTime)
+    {
+        var adjustmentRules = timeZone.GetAdjustmentRules();
+
+        if (adjustmentRules != null && adjustmentRules.Length > 0)
+        {
+            var currentAdjustmentRule = adjustmentRules
+                .FirstOrDefault(r => r.DateStart < localDateTime && r.DateEnd > localDateTime);
+
+            if (currentAdjustmentRule != null)
+            {
+
+                DateTime[] dstTransitionTimes =
+                {
+                    getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionStart, localDateTime.Year),
+                    getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionEnd, localDateTime.Year),
+                    getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionStart, localDateTime.Year + 1),
+                    getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionEnd, localDateTime.Year + 1)
+                };
+
+                var nextTransitionTime = dstTransitionTimes.OrderBy(tt => tt.Date).FirstOrDefault(tt => tt.Date > localDateTime);
+
+                return (nextTransitionTime, localDateTime.IsDaylightSavingTime());
+            }
+        }
+
+        return (null, false);
+    }
+
+    DateTime getDateTimeForTransitionTime(TransitionTime transitionTime, int year)
+    {
+        if (transitionTime.IsFixedDateRule)
+        {
+            return new DateTime(year: year,
+                month: transitionTime.Month,
+                day: transitionTime.Day,
+                hour: transitionTime.TimeOfDay.Hour,
+                minute: transitionTime.TimeOfDay.Minute,
+                second: transitionTime.TimeOfDay.Second);
+        }
+
+        var firstDayOfTransitionMonth = new DateTime(year: year,
+            month: transitionTime.Month,
+            day: 1,
+            hour: transitionTime.TimeOfDay.Hour,
+            minute: transitionTime.TimeOfDay.Minute,
+            second: transitionTime.TimeOfDay.Second);
+
+        if (transitionTime.DayOfWeek == firstDayOfTransitionMonth.DayOfWeek)
+        {
+            if (transitionTime.Week == 1)
+            {
+                return firstDayOfTransitionMonth;
+            }
+            else
+            {
+                var transitionDay = firstDayOfTransitionMonth.AddDays(7 * (transitionTime.Week - 1));
+                return transitionDay;
+            }
+        }
+
+        var firstDayOfWeekDay = transitionTime.DayOfWeek - firstDayOfTransitionMonth.DayOfWeek;
+
+        if (firstDayOfWeekDay < 0)
+        {
+            firstDayOfWeekDay += 7;
+        }
+
+        firstDayOfWeekDay += 1;
+
+        var day = firstDayOfWeekDay + 7 * (transitionTime.Week - 1);
+
+        return new DateTime(year: year,
+            month: transitionTime.Month,
+            day: day,
+            hour: transitionTime.TimeOfDay.Hour,
+            minute: transitionTime.TimeOfDay.Minute,
+            second: transitionTime.TimeOfDay.Second);
+    }
+}
