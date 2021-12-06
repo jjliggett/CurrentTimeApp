@@ -55,19 +55,20 @@
     private void updateCurrentTime()
     {
         var now = DateTime.Now;
-        var (nextTransitionTime, isDaylightSavingsTime) = getNextTransitionTime(TimeZoneInfo.Local, now);
+        var isDaylightSavingTime = now.IsDaylightSavingTime();
+        var nextTransitionTime = getNextTransitionTime(TimeZoneInfo.Local, now);
 
         currentTime = now;
         utcNow = currentTime.ToUniversalTime();
 
         if (nextTransitionTime != null)
         {
-            dstMessage = $"DST will {(isDaylightSavingsTime ? "end" : "start")} on {nextTransitionTime:D} at {nextTransitionTime:t}.";
+            dstMessage = $"DST will {(isDaylightSavingTime ? "end" : "start")} on {nextTransitionTime:D} at {nextTransitionTime:t}.";
             doesDstMessageExist = true;
         }
     }
 
-    (DateTime? NextTransitionTime, Boolean IsDaylightSavingTime) getNextTransitionTime(TimeZoneInfo timeZone, DateTime localDateTime)
+    DateTime? getNextTransitionTime(TimeZoneInfo timeZone, DateTime localDateTime)
     {
         var adjustmentRules = timeZone.GetAdjustmentRules();
 
@@ -89,11 +90,11 @@
 
                 var nextTransitionTime = dstTransitionTimes.OrderBy(tt => tt.Date).FirstOrDefault(tt => tt.Date > localDateTime);
 
-                return (nextTransitionTime, localDateTime.IsDaylightSavingTime());
+                return nextTransitionTime;
             }
         }
 
-        return (null, false);
+        return null;
     }
 
     DateTime getDateTimeForTransitionTime(TransitionTime transitionTime, int year)
