@@ -4,6 +4,20 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+@media (prefers-color-scheme: light) {
+    html, body {
+        background-color: white;
+        color: black;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    html, body {
+        background-color: #353535;
+        color: white;
+    }
+}
+
 h1:focus {
     outline: none;
 }
