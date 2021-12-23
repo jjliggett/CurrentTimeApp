@@ -8,8 +8,16 @@ main {
     flex: 1;
 }
 
-.sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+@media (prefers-color-scheme: light) {
+    .sidebar {
+        background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .sidebar {
+        background-color: #2D2D2D;
+    }
 }
 
 .top-row {
