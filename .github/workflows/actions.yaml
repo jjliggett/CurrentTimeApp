@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
       - name: Get version
         id: jjversion
-        uses: jjliggett/jjversion-action@29372acc6baef59f871d78dbe3939ca9494a6f85
+        uses: jjliggett/jjversion-action@909db5a4ff063f120aa0dced6d3da8601721ad92
       - name: Display jjversion outputs
         run: |
           echo "Major: ${{ steps.jjversion.outputs.major }}"
