@@ -55,7 +55,7 @@ jobs:
           name: release
           path: release/
       - name: Publish application to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.2.0
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
         if: ${{ github.ref == 'refs/heads/root' }}
         with:
           branch: gh-pages
