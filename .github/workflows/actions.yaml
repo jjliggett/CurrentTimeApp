@@ -36,13 +36,13 @@ jobs:
         with:
           dotnet-version: 6.0.x
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore --locked-mode
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build -c Release --no-restore
       - name: Test
         run: dotnet test --no-build --verbosity normal
       - name: Publish application
-        run: dotnet publish -c Release -o release
+        run: dotnet publish --no-restore --no-build -c Release -o release
       - name: Change index.html base href from / to CurrentTimeApp for GitHub Pages
         run: sed -i 's/<base href="\/"/<base href="\/CurrentTimeApp\/"/g' release/wwwroot/index.html
       - run: cat release/wwwroot/index.html
