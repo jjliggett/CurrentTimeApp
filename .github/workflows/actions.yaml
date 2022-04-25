@@ -76,7 +76,7 @@ jobs:
         run: sed -i 's/<base href="\/CurrentTimeApp\/"/<base href="\/CurrentTimeApp-dev-env\/"/g' release/wwwroot/index.html
       - run: ls -R
       - name: Publish application to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@360c8e75d0ee81732d0a5675c71e51b569df2ee8
+        uses: JamesIves/github-pages-deploy-action@55974d46d95c57ce803a56e3645ddb7517f7c62f
         with:
           repository-name: jjliggett/CurrentTimeApp-dev-env
           token: "${{ secrets.DEV_PAT_TOKEN }}"
@@ -101,7 +101,7 @@ jobs:
           path: release/
       - run: ls -R
       - name: Publish application to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@360c8e75d0ee81732d0a5675c71e51b569df2ee8
+        uses: JamesIves/github-pages-deploy-action@55974d46d95c57ce803a56e3645ddb7517f7c62f
         if: ${{ github.ref == 'refs/heads/root' }}
         with:
           branch: gh-pages
