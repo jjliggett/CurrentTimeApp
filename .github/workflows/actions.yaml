@@ -6,11 +6,14 @@ on:
       - README.md
       - LICENSE.md
       - 'docs/**'
+    branches:
+      - root
   pull_request:
     paths-ignore:
       - README.md
       - LICENSE.md
       - 'docs/**'
+  workflow_dispatch:
 
 jobs:
   build:
