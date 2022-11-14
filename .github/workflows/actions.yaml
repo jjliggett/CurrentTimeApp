@@ -53,7 +53,7 @@ jobs:
         run: touch release/wwwroot/.nojekyll
       - run: cp release/wwwroot/index.html release/wwwroot/404.html
       - name: Upload release.zip
-        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
+        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
         with:
           name: release
           path: release/
