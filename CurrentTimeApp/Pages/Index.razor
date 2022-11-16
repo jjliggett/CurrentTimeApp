@@ -90,11 +90,11 @@
         {
             foreach (var tzs in timeZoneStringValues)
             {
-                if (localTimeZone.Id != tzs)
+                if (tzs is not null && localTimeZone.Id != tzs)
                 {
                     var zone = TimeZoneInfo.FindSystemTimeZoneById(tzs);
 
-                    if (zone != null)
+                    if (zone is not null)
                     {
                         var time = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(utcNow, tzs);
 
@@ -136,7 +136,7 @@
             {
                 var nextTransitionTime = getNextTransitionTime(TimeZoneInfo.Local, currentTime);
 
-                if (nextTransitionTime != null)
+                if (nextTransitionTime is not null)
                 {
                     dstMessage = $"DST will {(currentTime.IsDaylightSavingTime() ? "end" : "start")} on {nextTransitionTime:D} at {nextTransitionTime:t}.";
                     doesDstMessageExist = true;
@@ -152,7 +152,7 @@
 
                     var tztTransitionTime = getNextTransitionTime(tzt.TimeZone, tzt.CurrentTime);
 
-                    if (tztTransitionTime != null)
+                    if (tztTransitionTime is not null)
                     {
                         tzt.DstMessage = $"DST will {(tzt.CurrentTime.IsDaylightSavingTime() ? "end" : "start")} on {tztTransitionTime:D} at {tztTransitionTime:t}.";
                         tzt.DoesDstMessageExist = true;
@@ -171,7 +171,7 @@
         var currentAdjustmentRule = timeZone.GetAdjustmentRules()?
             .FirstOrDefault(r => r.DateStart < localDateTime && r.DateEnd > localDateTime);
 
-        if (currentAdjustmentRule != null)
+        if (currentAdjustmentRule is not null)
         {
             DateTime[] dstTransitionTimes =
                     {
@@ -179,7 +179,7 @@
                 getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionEnd, localDateTime.Year),
                 getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionStart, localDateTime.Year + 1),
                 getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionEnd, localDateTime.Year + 1)
-            };
+        };
 
             var nextTransitionTime = dstTransitionTimes.OrderBy(tt => tt.Date).FirstOrDefault(tt => tt.Date > localDateTime);
 
