@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "CurrentTimeApp.dll": "sha256-7oxyIXghrwg3OmciRsdzd2nM\/nw8ylgTJFJK4c6xgko=",
+      "CurrentTimeApp.dll": "sha256-NV\/YXGRhUBdTw6MBfWfhk0i0ymdY0WiOh7m4oh7fx20=",
       "Microsoft.AspNetCore.Components.dll": "sha256-2vb5Tk4eU1I6bZOwtWRkXMlZMeCS\/8ZZdeb6N3Gr494=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-ZvB65TF6Tix6kJ7DpZLqlclEGauA8yT7fm7zhj+YQNM=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-VfuhQtMrvCmEflZYOOSPlstWKSnWBKH\/9leuaVp3ChE=",
@@ -26,19 +26,20 @@
       "Microsoft.Net.Http.Headers.dll": "sha256-P66ftDrXwc6ayND8uYzIk0CPQy1GjNZAPHx9RMhi3V4=",
       "netstandard.dll": "sha256-+YE\/eM8lr2cc4ktXuqvzq9aB0C8DDwvD1zlaOXgYafY=",
       "System.Buffers.dll": "sha256-JBI+Dlr7TNJ00N\/AheVxIS3RQdwcGMlcZ6hhPcF75fc=",
-      "System.Collections.Concurrent.dll": "sha256-i5401aJMJGrQAEMUz2y8q\/pVH5LdIEmltv2nqjM6Ufo=",
-      "System.Collections.dll": "sha256-qVkSuk\/8O5IEObRFBiUtOePfZT4IXnOqio4H+kJ7k7M=",
+      "System.Collections.Concurrent.dll": "sha256-zksqDjp\/g3pIwSjGUu71i5ilZG4te9yVlxNGaXqY+4A=",
+      "System.Collections.dll": "sha256-M7YRXHNc+7ZE2gFCqaHHxxeUbHh8Q4GsURFSkddsgZQ=",
       "System.ComponentModel.dll": "sha256-BLz3Wm0oM0Gjn8FyeXZ5AagxMamz+5pWuLYIoqAi6cI=",
       "System.Linq.dll": "sha256-6j8WtP4bqJOWurXjAJ4zWwU78G6IyXG9d\/mW6EOW\/r0=",
       "System.Memory.dll": "sha256-lkiNjLkJ2em\/Yxu+h8wG3IOhLHlllT1CRSpFKfbz32U=",
       "System.Net.Http.dll": "sha256-+7xpPgtl+bi\/ectsaEWbBlMcQVoRUCwKN5V\/kENPnU0=",
       "System.Net.Primitives.dll": "sha256-MuTcqRHpR2asQLlGC2L0rULFl5QXctZmuM2nerWb9Uc=",
-      "System.Private.CoreLib.dll": "sha256-SvNX9ZISubFShMH12kzG9KRlQYiLEddusDP+xrgAPDU=",
+      "System.Private.CoreLib.dll": "sha256-MCSdGxpSE13D5qdCLs1H7J+fawK6xqnwJhV6Bde9tKc=",
       "System.Private.Uri.dll": "sha256-iQLkgmQ5j0gd4RitQ9bHNt35ypPySlsLsYkXS4T2zIE=",
       "System.Runtime.dll": "sha256-T8rjTMory8SS4hUcTTB7o4ZsPeSCJg9fgg9gb0RyxX4=",
       "System.Runtime.InteropServices.JavaScript.dll": "sha256-p6QlxaDsDhsi59NfL1cBzvgZxpJYohqpxTTr61ilg3E=",
       "System.Text.Encodings.Web.dll": "sha256-XBt5npITG0e1AdSVu2U9+7M5YJjQso8zDFc7M3hBA2c=",
-      "System.Text.Json.dll": "sha256-we\/mz\/sGDhTtcsEcolYWjiFnbktrlhiRKL2V6QZKX1M="
+      "System.Text.Json.dll": "sha256-we\/mz\/sGDhTtcsEcolYWjiFnbktrlhiRKL2V6QZKX1M=",
+      "System.Text.RegularExpressions.dll": "sha256-eidNezCP9R8gxirIr2QCJY47NvBUSvyb1S4cyM0rpL8="
     },
     "extensions": null,
     "lazyAssembly": null,
