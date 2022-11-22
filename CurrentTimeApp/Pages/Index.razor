@@ -7,6 +7,7 @@
 @page "/home.htm"
 @using static System.TimeZoneInfo
 @using Microsoft.AspNetCore.WebUtilities
+@using System.Text.RegularExpressions;
 @inject NavigationManager NavManager
 
 <PageTitle>Current Time | Current Time App</PageTitle>
@@ -18,7 +19,10 @@
 <p style="width: 80%">Also according to your computer, the current local time is @currentTime.ToLongTimeString() (@timeZoneName).</p>
 
 <div style="border: 0.5px solid black; padding: 10px; display: inline-block; margin-bottom: 10px">
-    <p style="font-size: 2.50em; font-weight: bold; margin: 0px">@currentTime.ToShortTimeString() (@timeZoneName@getUtcOffsetString(currentTime))</p>
+    <p style="font-size: 2.50em; font-weight: bold; margin: 0px">
+        @currentTime.ToShortTimeString()
+        (<span title="@cleanedTimeZoneDisplayName(timeZoneInfo)">@timeZoneName@getUtcOffsetString(currentTime)</span>)
+    </p>
     <p style="font-size: 1.50em; margin: 0px">@currentTime.ToLongDateString()</p>
     @if (doesDstMessageExist)
     {
@@ -31,7 +35,10 @@
 @foreach (var tzt in timeZoneTime)
 {
     <div style="border: 0.5px solid black; padding: 10px; display: inline-block; margin-bottom: 10px">
-        <p style="font-size: 2.50em; font-weight: bold; margin: 0px">@tzt.CurrentTime.ToShortTimeString() (@tzt.TimeZoneName@getUtcOffsetString(tzt.CurrentTime))</p>
+        <p style="font-size: 2.50em; font-weight: bold; margin: 0px">
+            @tzt.CurrentTime.ToShortTimeString()
+            (<span title="@cleanedTimeZoneDisplayName(tzt.TimeZone)">@tzt.TimeZoneName@getUtcOffsetString(tzt.CurrentTime)</span>)
+        </p>
         <p style="font-size: 1.50em; margin: 0px">@tzt.CurrentTime.ToLongDateString()</p>
         @if (tzt.DoesDstMessageExist)
         {
@@ -174,12 +181,12 @@
         if (currentAdjustmentRule is not null)
         {
             DateTime[] dstTransitionTimes =
-                    {
+            {
                 getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionStart, localDateTime.Year),
                 getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionEnd, localDateTime.Year),
                 getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionStart, localDateTime.Year + 1),
                 getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionEnd, localDateTime.Year + 1)
-        };
+            };
 
             var nextTransitionTime = dstTransitionTimes.OrderBy(tt => tt.Date).FirstOrDefault(tt => tt.Date > localDateTime);
 
@@ -244,5 +251,15 @@
         {
             return $", UTC{time.ToString("%K")}";
         }
+    }
+
+    string cleanedTimeZoneDisplayName(TimeZoneInfo timeZoneInfo)
+    {
+        return Regex.Replace(input: timeZoneInfo.DisplayName,
+            pattern: """\(UTC[\+-]\d+:\d+\)""",
+            replacement: "",
+            options: RegexOptions.IgnoreCase |
+                RegexOptions.Compiled |
+                RegexOptions.CultureInvariant).Trim();
     }
 }
