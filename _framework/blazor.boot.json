@@ -7,7 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "CurrentTimeApp.dll": "sha256-EEUn32ITkmYxmZKJXcd70SB0oazzXezrqDBBoXrFC\/s=",
+      "CurrentTimeApp.Components.dll": "sha256-0rEnvW9seOSpmHT7Vqft2FtF7pzBFrlnJKrJJfOi7m4=",
+      "CurrentTimeApp.dll": "sha256-YE2K0+XbudHVZTkxtm6nz8QJaP9NRZ1f5UtGfJWguW8=",
       "Microsoft.AspNetCore.Components.dll": "sha256-2vb5Tk4eU1I6bZOwtWRkXMlZMeCS\/8ZZdeb6N3Gr494=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-ZvB65TF6Tix6kJ7DpZLqlclEGauA8yT7fm7zhj+YQNM=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-VfuhQtMrvCmEflZYOOSPlstWKSnWBKH\/9leuaVp3ChE=",
