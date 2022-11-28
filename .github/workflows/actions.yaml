@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-website:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,13 +39,13 @@ jobs:
         with:
           dotnet-version: 7.0.x
       - name: Restore dependencies
-        run: dotnet restore --locked-mode
+        run: dotnet restore --locked-mode CurrentTimeApp/CurrentTimeApp.csproj
       - name: Build
-        run: dotnet build -c Release --no-restore
+        run: dotnet build -c Release --no-restore CurrentTimeApp/CurrentTimeApp.csproj
       - name: Test
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test --no-build --verbosity normal CurrentTimeApp/CurrentTimeApp.csproj
       - name: Publish application
-        run: dotnet publish --no-restore --no-build -c Release -o release
+        run: dotnet publish --no-restore --no-build -c Release -o release CurrentTimeApp/CurrentTimeApp.csproj
       - name: Change index.html base href from / to CurrentTimeApp for GitHub Pages
         run: sed -i 's/<base href="\/"/<base href="\/CurrentTimeApp\/"/g' release/wwwroot/index.html
       - run: cat release/wwwroot/index.html
@@ -58,9 +58,53 @@ jobs:
           name: release
           path: release/
 
-  deploy-develop:
+  build-android:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Checkout
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
+        with:
+          fetch-depth: 0
+      - name: Get version
+        id: jjversion
+        uses: jjliggett/jjversion-action@2da79cd1d16ab008ce646857df88da0a6a42fd87
+      - name: Display jjversion outputs
+        run: |
+          echo "Major: ${{ steps.jjversion.outputs.major }}"
+          echo "Minor: ${{ steps.jjversion.outputs.minor }}"
+          echo "Patch: ${{ steps.jjversion.outputs.patch }}"
+          echo "MajorMinorPatch: ${{ steps.jjversion.outputs.majorMinorPatch }}"
+          echo "Sha: ${{ steps.jjversion.outputs.sha }}"
+          echo "ShortSha: ${{ steps.jjversion.outputs.shortSha }}"
+      - name: Setup .NET
+        uses: actions/setup-dotnet@607fce577a46308457984d59e4954e075820f10a
+        with:
+          dotnet-version: 7.0.x
+      - name: Install dotnet maui workload
+        run: dotnet workload install maui --source https://api.nuget.org/v3/index.json
+      - name: Install dotnet maui-android workload to build application
+        run: dotnet workload restore CurrentTimeApp.MauiBlazor/CurrentTimeApp.MauiBlazor.csproj
+      - name: Restore dependencies
+        run: dotnet restore --locked-mode CurrentTimeApp.MauiBlazor/CurrentTimeApp.MauiBlazor.csproj
+      - name: Build
+        run: dotnet build -c Release --no-restore -f net7.0-android CurrentTimeApp.MauiBlazor/CurrentTimeApp.MauiBlazor.csproj
+      - name: Test
+        run: dotnet test --no-build --verbosity normal -f net7.0-android CurrentTimeApp.MauiBlazor/CurrentTimeApp.MauiBlazor.csproj
+      - name: Publish application
+        run: dotnet publish --no-restore -c Release -o android-release -f net7.0-android CurrentTimeApp.MauiBlazor/CurrentTimeApp.MauiBlazor.csproj
+      - run: ls -R
+      - name: Upload release.zip
+        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
+        with:
+          name: android-release
+          path: android-release/
+
+  deploy-website-develop:
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-website
     environment:
       name: development
       url: https://jjliggett.github.io/CurrentTimeApp-dev-env/
@@ -89,9 +133,9 @@ jobs:
           git-config-email: 67353173+jjliggett@users.noreply.github.com
           single-commit: true
 
-  deploy-production:
+  deploy-website-production:
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-website
     steps:
       - name: Checkout
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
@@ -111,3 +155,48 @@ jobs:
           folder: release/wwwroot
           git-config-name: jjliggett
           git-config-email: 67353173+jjliggett@users.noreply.github.com
+
+  deploy-release:
+    runs-on: ubuntu-latest
+    needs:
+      - build-android
+      - deploy-website-production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
+        with:
+          fetch-depth: 0
+      - name: Get version
+        id: jjversion
+        uses: jjliggett/jjversion-action@2da79cd1d16ab008ce646857df88da0a6a42fd87
+      - name: Display jjversion outputs
+        run: |
+          echo "Major: ${{ steps.jjversion.outputs.major }}"
+          echo "Minor: ${{ steps.jjversion.outputs.minor }}"
+          echo "Patch: ${{ steps.jjversion.outputs.patch }}"
+          echo "MajorMinorPatch: ${{ steps.jjversion.outputs.majorMinorPatch }}"
+          echo "Sha: ${{ steps.jjversion.outputs.sha }}"
+          echo "ShortSha: ${{ steps.jjversion.outputs.shortSha }}"
+      - run: git reset --soft HEAD~1
+      - name: Get previous version from previous commit
+        id: previousversion
+        uses: jjliggett/jjversion-action@2da79cd1d16ab008ce646857df88da0a6a42fd87
+      - run: echo "VERSION=$(echo ${{ steps.jjversion.outputs.majorMinorPatch }})" >> $GITHUB_ENV
+      - run: echo "PREVIOUS_COMMIT_VERSION=$(echo ${{ steps.previousversion.outputs.majorMinorPatch }})" >> $GITHUB_ENV
+      - name: Download build
+        uses: actions/download-artifact@9782bd6a9848b53b110e712e20e42d89988822b7
+        with:
+          name: android-release
+          path: android-release/
+      - run: ls -R
+      - name: Create GitHub release
+        uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0
+        if: ${{ github.ref == 'refs/heads/root' && env.VERSION != env.PREVIOUS_COMMIT_VERSION }}
+        with:
+          repo_token: ${{ secrets.RELEASES_TOKEN }}
+          automatic_release_tag: v${{ env.VERSION }}
+          prerelease: false
+          files: |
+            android-release/com.jjliggett.currenttimeapp.mauiblazor-Signed.apk
+            README.md
+            LICENSE.md

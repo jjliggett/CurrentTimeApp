@@ -1,0 +1,256 @@
+﻿@using static System.TimeZoneInfo
+@using Microsoft.AspNetCore.WebUtilities
+@using System.Text.RegularExpressions;
+@inject NavigationManager NavManager
+
+<h1><b>Current Time</b></h1>
+
+<p style="width: 80%">According to your computer, the current Universal Time Coordinated (UTC) is @utcNow.ToLongTimeString() on @utcNow.ToLongDateString(). This is also called Universal Time and Universal Coordinated Time, and is equivalent to Greenwich Mean Time (GMT).</p>
+
+<p style="width: 80%">Also according to your computer, the current local time is @currentTime.ToLongTimeString() (@timeZoneName).</p>
+
+<div style="border: 0.5px solid black; padding: 10px; display: inline-block; margin-bottom: 10px">
+    <p style="font-size: 2.50em; font-weight: bold; margin: 0px">
+        @currentTime.ToShortTimeString()
+        (<span title="@cleanedTimeZoneDisplayName(timeZoneInfo)">@timeZoneName@getUtcOffsetString(currentTime)</span>)
+    </p>
+    <p style="font-size: 1.50em; margin: 0px">@currentTime.ToLongDateString()</p>
+    @if (doesDstMessageExist)
+    {
+        <p style="font-size: 1.00em; margin: 0px">@dstMessage</p>
+    }
+</div>
+
+<br />
+
+@foreach (var tzt in timeZoneTime)
+{
+    <div style="border: 0.5px solid black; padding: 10px; display: inline-block; margin-bottom: 10px">
+        <p style="font-size: 2.50em; font-weight: bold; margin: 0px">
+            @tzt.CurrentTime.ToShortTimeString()
+            (<span title="@cleanedTimeZoneDisplayName(tzt.TimeZone)">@tzt.TimeZoneName@getUtcOffsetString(tzt.CurrentTime)</span>)
+        </p>
+        <p style="font-size: 1.50em; margin: 0px">@tzt.CurrentTime.ToLongDateString()</p>
+        @if (tzt.DoesDstMessageExist)
+        {
+            <p style="font-size: 1.00em; margin: 0px">@tzt.DstMessage</p>
+        }
+    </div>
+
+    <br />
+}
+
+@code {
+    private DateTime utcNow = DateTime.UtcNow;
+    private DateTime currentTime = DateTime.Now;
+    private TimeZoneInfo timeZoneInfo = TimeZoneInfo.Local;
+    private string timeZoneName = DateTime.Now.IsDaylightSavingTime() ? TimeZoneInfo.Local.DaylightName : TimeZoneInfo.Local.StandardName;
+    private bool doesDstMessageExist = false;
+    private string dstMessage = "";
+
+    private List<TimeZoneTime> timeZoneTime = new List<TimeZoneTime>();
+
+    private readonly PeriodicTimer timer = new(TimeSpan.FromSeconds(1));
+
+    private class TimeZoneTime
+    {
+        public TimeZoneInfo TimeZone { get; set; }
+        public DateTime CurrentTime { get; set; }
+        public string TimeZoneName { get; set; }
+        public bool DoesDstMessageExist { get; set; }
+        public string DstMessage { get; set; }
+
+        public TimeZoneTime(
+            TimeZoneInfo timeZone,
+            DateTime currentTime,
+            string timeZoneName,
+            bool doesDstMessageExist,
+            string dstMessage)
+        {
+            TimeZone = timeZone ?? throw new ArgumentNullException(nameof(timeZone));
+            CurrentTime = currentTime;
+            TimeZoneName = timeZoneName ?? throw new ArgumentNullException(nameof(timeZoneName));
+            DoesDstMessageExist = doesDstMessageExist;
+            DstMessage = dstMessage ?? throw new ArgumentNullException(nameof(dstMessage));
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        var utcNow = DateTime.UtcNow;
+        var localTimeZone = TimeZoneInfo.Local;
+
+        var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
+
+        var queryValues = QueryHelpers.ParseQuery(uri.Query);
+
+        if (queryValues.TryGetValue("timeZone", out var timeZoneStringValues))
+        {
+            foreach (var tzs in timeZoneStringValues)
+            {
+                if (tzs is not null && localTimeZone.Id != tzs)
+                {
+                    var zone = TimeZoneInfo.FindSystemTimeZoneById(tzs);
+
+                    if (zone is not null)
+                    {
+                        var time = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(utcNow, tzs);
+
+                        timeZoneTime.Add(new TimeZoneTime(
+                            timeZone: zone,
+                            currentTime: time,
+                            timeZoneName: time.IsDaylightSavingTime() ? zone.DaylightName : zone.StandardName,
+                            doesDstMessageExist: false,
+                            dstMessage: ""
+                        ));
+                    }
+                }
+            }
+        }
+
+        base.OnInitialized();
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            return updateCurrentTimeAsync();
+        }
+
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    private async Task updateCurrentTimeAsync()
+    {
+        while (await timer.WaitForNextTickAsync())
+        {
+            List<Task> tasks = new();
+
+            currentTime = DateTime.Now;
+            utcNow = currentTime.ToUniversalTime();
+
+            tasks.Add(Task.Run(action: () =>
+            {
+                var nextTransitionTime = getNextTransitionTime(TimeZoneInfo.Local, currentTime);
+
+                if (nextTransitionTime is not null)
+                {
+                    dstMessage = $"DST will {(currentTime.IsDaylightSavingTime() ? "end" : "start")} on {nextTransitionTime:D} at {nextTransitionTime:t}.";
+                    doesDstMessageExist = true;
+                }
+            }));
+
+            foreach (var tzt in timeZoneTime)
+            {
+                tasks.Add(Task.Run(action: () =>
+                {
+                    tzt.CurrentTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(utcNow, tzt.TimeZone.Id);
+                    tzt.TimeZoneName = tzt.CurrentTime.IsDaylightSavingTime() ? tzt.TimeZone.DaylightName : tzt.TimeZone.StandardName;
+
+                    var tztTransitionTime = getNextTransitionTime(tzt.TimeZone, tzt.CurrentTime);
+
+                    if (tztTransitionTime is not null)
+                    {
+                        tzt.DstMessage = $"DST will {(tzt.CurrentTime.IsDaylightSavingTime() ? "end" : "start")} on {tztTransitionTime:D} at {tztTransitionTime:t}.";
+                        tzt.DoesDstMessageExist = true;
+                    }
+                }));
+            }
+
+            await Task.WhenAll(tasks);
+
+            StateHasChanged();
+        }
+    }
+
+    DateTime? getNextTransitionTime(TimeZoneInfo timeZone, DateTime localDateTime)
+    {
+        var currentAdjustmentRule = timeZone.GetAdjustmentRules()?
+            .FirstOrDefault(r => r.DateStart < localDateTime && r.DateEnd > localDateTime);
+
+        if (currentAdjustmentRule is not null)
+        {
+            DateTime[] dstTransitionTimes =
+            {
+                getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionStart, localDateTime.Year),
+                getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionEnd, localDateTime.Year),
+                getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionStart, localDateTime.Year + 1),
+                getDateTimeForTransitionTime(currentAdjustmentRule.DaylightTransitionEnd, localDateTime.Year + 1)
+            };
+
+            var nextTransitionTime = dstTransitionTimes.OrderBy(tt => tt.Date).FirstOrDefault(tt => tt.Date > localDateTime);
+
+            return nextTransitionTime;
+        }
+
+        return null;
+    }
+
+    DateTime getDateTimeForTransitionTime(TransitionTime transitionTime, int year)
+    {
+        if (transitionTime.IsFixedDateRule)
+        {
+            return new DateTime(year: year,
+                month: transitionTime.Month,
+                day: transitionTime.Day,
+                hour: transitionTime.TimeOfDay.Hour,
+                minute: transitionTime.TimeOfDay.Minute,
+                second: transitionTime.TimeOfDay.Second);
+        }
+
+        var firstDayOfTransitionMonth = new DateTime(year: year,
+            month: transitionTime.Month,
+            day: 1,
+            hour: transitionTime.TimeOfDay.Hour,
+            minute: transitionTime.TimeOfDay.Minute,
+            second: transitionTime.TimeOfDay.Second);
+
+        if (transitionTime.DayOfWeek == firstDayOfTransitionMonth.DayOfWeek &&
+            transitionTime.Week == 1)
+        {
+            return firstDayOfTransitionMonth;
+        }
+
+        var firstInstanceOfWeekDayInMonth = firstDayOfTransitionMonth.AddDays(value:
+            transitionTime.DayOfWeek > firstDayOfTransitionMonth.DayOfWeek ?
+            transitionTime.DayOfWeek - firstDayOfTransitionMonth.DayOfWeek :
+            7 - (int)firstDayOfTransitionMonth.DayOfWeek + (int)transitionTime.DayOfWeek);
+
+        if (transitionTime.Week == 1)
+        {
+            return firstInstanceOfWeekDayInMonth;
+        }
+
+        var transitionDay = firstInstanceOfWeekDayInMonth.AddDays(7 * (transitionTime.Week - 1));
+
+        while (transitionDay.Month != transitionTime.Month)
+        {
+            transitionDay = transitionDay.AddDays(-7);
+        }
+
+        return transitionDay;
+    }
+
+    string getUtcOffsetString(DateTime time)
+    {
+        if (string.IsNullOrWhiteSpace(time.ToString("%K")))
+        {
+            return "";
+        }
+        else
+        {
+            return $", UTC{time.ToString("%K")}";
+        }
+    }
+
+    string cleanedTimeZoneDisplayName(TimeZoneInfo timeZoneInfo)
+    {
+        return Regex.Replace(input: timeZoneInfo.DisplayName,
+            pattern: """\(UTC[\+-]\d+:\d+\)""",
+            replacement: "",
+            options: RegexOptions.IgnoreCase |
+                RegexOptions.Compiled |
+                RegexOptions.CultureInvariant).Trim();
+    }
+}

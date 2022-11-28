@@ -239,6 +239,13 @@
         "dependencies": {
           "System.Text.Encodings.Web": "7.0.0"
         }
+      },
+      "currenttimeapp.components": {
+        "type": "Project",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "[7.0.0, )",
+          "Microsoft.AspNetCore.WebUtilities": "[2.2.0, )"
+        }
       }
     },
     "net7.0/browser-wasm": {

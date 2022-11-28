@@ -3,7 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrentTimeApp", "CurrentTimeApp\CurrentTimeApp.csproj", "{86CA2831-57B4-4837-89F6-17CFDC335B14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrentTimeApp", "CurrentTimeApp\CurrentTimeApp.csproj", "{86CA2831-57B4-4837-89F6-17CFDC335B14}"
+	ProjectSection(ProjectDependencies) = postProject
+		{93ABE5D5-0917-4865-AEE9-53103226C811} = {93ABE5D5-0917-4865-AEE9-53103226C811}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9A2B94F-7E1E-4BE9-8F0F-69D87AC8F6DF}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		versioning.yaml = versioning.yaml
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrentTimeApp.Components", "CurrentTimeApp.Components\CurrentTimeApp.Components.csproj", "{93ABE5D5-0917-4865-AEE9-53103226C811}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrentTimeApp.MauiBlazor", "CurrentTimeApp.MauiBlazor\CurrentTimeApp.MauiBlazor.csproj", "{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +30,16 @@ Global
 		{86CA2831-57B4-4837-89F6-17CFDC335B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86CA2831-57B4-4837-89F6-17CFDC335B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86CA2831-57B4-4837-89F6-17CFDC335B14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93ABE5D5-0917-4865-AEE9-53103226C811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93ABE5D5-0917-4865-AEE9-53103226C811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93ABE5D5-0917-4865-AEE9-53103226C811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93ABE5D5-0917-4865-AEE9-53103226C811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
