@@ -161,6 +161,8 @@ jobs:
     needs:
       - build-android
       - deploy-website-production
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
@@ -193,10 +195,11 @@ jobs:
         uses: marvinpinto/action-automatic-releases@919008cf3f741b179569b7a6fb4d8860689ab7f0
         if: ${{ github.ref == 'refs/heads/root' && env.VERSION != env.PREVIOUS_COMMIT_VERSION }}
         with:
-          repo_token: ${{ secrets.RELEASES_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           automatic_release_tag: v${{ env.VERSION }}
           prerelease: false
           files: |
             android-release/com.jjliggett.currenttimeapp.mauiblazor-Signed.apk
             README.md
             LICENSE.md
+            
