@@ -10,7 +10,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrentTimeApp", "CurrentTi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9A2B94F-7E1E-4BE9-8F0F-69D87AC8F6DF}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\actions.yaml = .github\workflows\actions.yaml
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 		versioning.yaml = versioning.yaml
@@ -19,6 +18,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrentTimeApp.Components", "CurrentTimeApp.Components\CurrentTimeApp.Components.csproj", "{93ABE5D5-0917-4865-AEE9-53103226C811}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrentTimeApp.MauiBlazor", "CurrentTimeApp.MauiBlazor\CurrentTimeApp.MauiBlazor.csproj", "{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github-workflows", ".github-workflows", "{8FACEC98-DB0B-4A57-86F0-F94FDA0EC752}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\actions.yaml = .github\workflows\actions.yaml
+		.github\workflows\codeql-analysis.yaml = .github\workflows\codeql-analysis.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
