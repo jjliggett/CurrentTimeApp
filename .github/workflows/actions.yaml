@@ -85,6 +85,10 @@ jobs:
         uses: actions/setup-dotnet@607fce577a46308457984d59e4954e075820f10a
         with:
           dotnet-version: 7.0.202
+      - run: dotnet --info
+      - run: dotnet --version
+      - run: dotnet --list-runtimes
+      - run: dotnet --list-sdks
       - name: Install dotnet maui workload
         run: dotnet workload install maui --source https://api.nuget.org/v3/index.json
       - name: Install dotnet maui-android workload to build application
