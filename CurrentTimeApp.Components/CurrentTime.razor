@@ -55,23 +55,45 @@
     private class TimeZoneTime
     {
         public TimeZoneInfo TimeZone { get; set; }
-        public DateTime CurrentTime { get; set; }
-        public string TimeZoneName { get; set; }
+        public DateTime CurrentTimeUtc { get; set; }
+        public DateTime CurrentTime
+        {
+            get
+            {
+                return TimeZoneInfo.ConvertTimeBySystemTimeZoneId(CurrentTimeUtc, TimeZone.Id);
+            }
+        }
+        public string TimeZoneName
+        {
+            get
+            {
+                return IsDaylightSavingTime() ? TimeZone.DaylightName : TimeZone.StandardName;
+            }
+        }
         public bool DoesDstMessageExist { get; set; }
         public string DstMessage { get; set; }
 
         public TimeZoneTime(
             TimeZoneInfo timeZone,
-            DateTime currentTime,
-            string timeZoneName,
+            DateTime currentTimeUtc,
             bool doesDstMessageExist,
             string dstMessage)
         {
             TimeZone = timeZone ?? throw new ArgumentNullException(nameof(timeZone));
-            CurrentTime = currentTime;
-            TimeZoneName = timeZoneName ?? throw new ArgumentNullException(nameof(timeZoneName));
+            CurrentTimeUtc = currentTimeUtc;
+
+            if (currentTimeUtc.Kind != DateTimeKind.Utc)
+            {
+                throw new Exception("UTC time required to calculate time for time zone");
+            }
+
             DoesDstMessageExist = doesDstMessageExist;
             DstMessage = dstMessage ?? throw new ArgumentNullException(nameof(dstMessage));
+        }
+
+        public bool IsDaylightSavingTime()
+        {
+            return TimeZone.IsDaylightSavingTime(CurrentTimeUtc);
         }
     }
 
@@ -94,12 +116,9 @@
 
                     if (zone is not null)
                     {
-                        var time = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(utcNow, tzs);
-
                         timeZoneTime.Add(new TimeZoneTime(
                             timeZone: zone,
-                            currentTime: time,
-                            timeZoneName: time.IsDaylightSavingTime() ? zone.DaylightName : zone.StandardName,
+                            currentTimeUtc: utcNow,
                             doesDstMessageExist: false,
                             dstMessage: ""
                         ));
@@ -128,6 +147,7 @@
             List<Task> tasks = new();
 
             currentTime = DateTime.Now;
+            timeZoneName = DateTime.Now.IsDaylightSavingTime() ? TimeZoneInfo.Local.DaylightName : TimeZoneInfo.Local.StandardName;
             utcNow = currentTime.ToUniversalTime();
 
             tasks.Add(Task.Run(action: () =>
@@ -145,14 +165,13 @@
             {
                 tasks.Add(Task.Run(action: () =>
                 {
-                    tzt.CurrentTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(utcNow, tzt.TimeZone.Id);
-                    tzt.TimeZoneName = tzt.CurrentTime.IsDaylightSavingTime() ? tzt.TimeZone.DaylightName : tzt.TimeZone.StandardName;
+                    tzt.CurrentTimeUtc = utcNow;
 
                     var tztTransitionTime = getNextTransitionTime(tzt.TimeZone, tzt.CurrentTime);
 
                     if (tztTransitionTime is not null)
                     {
-                        tzt.DstMessage = $"DST will {(tzt.CurrentTime.IsDaylightSavingTime() ? "end" : "start")} on {tztTransitionTime:D} at {tztTransitionTime:t}.";
+                        tzt.DstMessage = $"DST will {(tzt.IsDaylightSavingTime() ? "end" : "start")} on {tztTransitionTime:D} at {tztTransitionTime:t}.";
                         tzt.DoesDstMessageExist = true;
                     }
                 }));
