@@ -4,9 +4,9 @@
     "net7.0-android33.0": {
       "Microsoft.AspNetCore.Components.WebView.Maui": {
         "type": "Direct",
-        "requested": "[7.0.81, )",
-        "resolved": "7.0.81",
-        "contentHash": "ipNQjfLWOYdmkRxVuZqbLNQVowYAhRIMzCtfH4ydju7yf2q69jk7IzEHnxtZlKyGNsutJI2i+N1w37I7D7DIhQ==",
+        "requested": "[7.0.86, )",
+        "resolved": "7.0.86",
+        "contentHash": "a3FbXd2FOGq8q/jfj9KPmNwYaEQ+j02gy9xI1f7a7GncPRpvHu+pPQvChnHzjMaN1dZyczDwB8K7H5tI7zDNdg==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "7.0.0",
           "Microsoft.AspNetCore.Components.WebView": "7.0.0",
@@ -63,9 +63,9 @@
       },
       "Microsoft.Maui.Graphics": {
         "type": "Direct",
-        "requested": "[7.0.81, )",
-        "resolved": "7.0.81",
-        "contentHash": "VMKEIczKYpSN2eGvSv7p40vKhnIXGRXoWLohl2y6azGBMsQbW2GKMjbH4Qv/4zNhBepeGeXTWhtQGAShqSUqZQ=="
+        "requested": "[7.0.86, )",
+        "resolved": "7.0.86",
+        "contentHash": "v0VB9NhVrJarOzl7BHs2LaFQE+syKQ8o1Wbs+I4CGxmQO4cosmoFPUa0ogp1oaJe8Tazu504+P8JDy8fhDsSKQ=="
       },
       "Xamarin.Android.Glide": {
         "type": "Direct",
@@ -1190,9 +1190,9 @@
     "net7.0-ios16.1": {
       "Microsoft.AspNetCore.Components.WebView.Maui": {
         "type": "Direct",
-        "requested": "[7.0.81, )",
-        "resolved": "7.0.81",
-        "contentHash": "ipNQjfLWOYdmkRxVuZqbLNQVowYAhRIMzCtfH4ydju7yf2q69jk7IzEHnxtZlKyGNsutJI2i+N1w37I7D7DIhQ==",
+        "requested": "[7.0.86, )",
+        "resolved": "7.0.86",
+        "contentHash": "a3FbXd2FOGq8q/jfj9KPmNwYaEQ+j02gy9xI1f7a7GncPRpvHu+pPQvChnHzjMaN1dZyczDwB8K7H5tI7zDNdg==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "7.0.0",
           "Microsoft.AspNetCore.Components.WebView": "7.0.0",
@@ -1249,9 +1249,9 @@
       },
       "Microsoft.Maui.Graphics": {
         "type": "Direct",
-        "requested": "[7.0.81, )",
-        "resolved": "7.0.81",
-        "contentHash": "VMKEIczKYpSN2eGvSv7p40vKhnIXGRXoWLohl2y6azGBMsQbW2GKMjbH4Qv/4zNhBepeGeXTWhtQGAShqSUqZQ=="
+        "requested": "[7.0.86, )",
+        "resolved": "7.0.86",
+        "contentHash": "v0VB9NhVrJarOzl7BHs2LaFQE+syKQ8o1Wbs+I4CGxmQO4cosmoFPUa0ogp1oaJe8Tazu504+P8JDy8fhDsSKQ=="
       },
       "Microsoft.AspNetCore.Authorization": {
         "type": "Transitive",
@@ -1520,9 +1520,9 @@
     "net7.0-maccatalyst16.1": {
       "Microsoft.AspNetCore.Components.WebView.Maui": {
         "type": "Direct",
-        "requested": "[7.0.81, )",
-        "resolved": "7.0.81",
-        "contentHash": "ipNQjfLWOYdmkRxVuZqbLNQVowYAhRIMzCtfH4ydju7yf2q69jk7IzEHnxtZlKyGNsutJI2i+N1w37I7D7DIhQ==",
+        "requested": "[7.0.86, )",
+        "resolved": "7.0.86",
+        "contentHash": "a3FbXd2FOGq8q/jfj9KPmNwYaEQ+j02gy9xI1f7a7GncPRpvHu+pPQvChnHzjMaN1dZyczDwB8K7H5tI7zDNdg==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "7.0.0",
           "Microsoft.AspNetCore.Components.WebView": "7.0.0",
@@ -1579,9 +1579,9 @@
       },
       "Microsoft.Maui.Graphics": {
         "type": "Direct",
-        "requested": "[7.0.81, )",
-        "resolved": "7.0.81",
-        "contentHash": "VMKEIczKYpSN2eGvSv7p40vKhnIXGRXoWLohl2y6azGBMsQbW2GKMjbH4Qv/4zNhBepeGeXTWhtQGAShqSUqZQ=="
+        "requested": "[7.0.86, )",
+        "resolved": "7.0.86",
+        "contentHash": "v0VB9NhVrJarOzl7BHs2LaFQE+syKQ8o1Wbs+I4CGxmQO4cosmoFPUa0ogp1oaJe8Tazu504+P8JDy8fhDsSKQ=="
       },
       "Microsoft.AspNetCore.Authorization": {
         "type": "Transitive",
@@ -1850,9 +1850,9 @@
     "net7.0-windows10.0.19041": {
       "Microsoft.AspNetCore.Components.WebView.Maui": {
         "type": "Direct",
-        "requested": "[7.0.81, )",
-        "resolved": "7.0.81",
-        "contentHash": "ipNQjfLWOYdmkRxVuZqbLNQVowYAhRIMzCtfH4ydju7yf2q69jk7IzEHnxtZlKyGNsutJI2i+N1w37I7D7DIhQ==",
+        "requested": "[7.0.86, )",
+        "resolved": "7.0.86",
+        "contentHash": "a3FbXd2FOGq8q/jfj9KPmNwYaEQ+j02gy9xI1f7a7GncPRpvHu+pPQvChnHzjMaN1dZyczDwB8K7H5tI7zDNdg==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "7.0.0",
           "Microsoft.AspNetCore.Components.WebView": "7.0.0",
@@ -1909,18 +1909,18 @@
       },
       "Microsoft.Maui.Graphics": {
         "type": "Direct",
-        "requested": "[7.0.81, )",
-        "resolved": "7.0.81",
-        "contentHash": "VMKEIczKYpSN2eGvSv7p40vKhnIXGRXoWLohl2y6azGBMsQbW2GKMjbH4Qv/4zNhBepeGeXTWhtQGAShqSUqZQ=="
+        "requested": "[7.0.86, )",
+        "resolved": "7.0.86",
+        "contentHash": "v0VB9NhVrJarOzl7BHs2LaFQE+syKQ8o1Wbs+I4CGxmQO4cosmoFPUa0ogp1oaJe8Tazu504+P8JDy8fhDsSKQ=="
       },
       "Microsoft.Maui.Graphics.Win2D.WinUI.Desktop": {
         "type": "Direct",
-        "requested": "[7.0.81, )",
-        "resolved": "7.0.81",
-        "contentHash": "29ihRZnbKwfo74E14ZU5futuYjyoQk/YeAjA1kfN6eMy/AlXqsBgTCe+iSkW/Tvr144c/Ne367pr0+ATY8Uzjg==",
+        "requested": "[7.0.86, )",
+        "resolved": "7.0.86",
+        "contentHash": "o9nXvM81cu9PbdDBFcybMyM2hIgb0a8CLu3ZwD0cJrI01ujLoltwkqmlvOrVxgAwL9RvoLIjN51WFjPwvbPrkw==",
         "dependencies": {
           "Microsoft.Graphics.Win2D": "1.0.4",
-          "Microsoft.Maui.Graphics": "7.0.81",
+          "Microsoft.Maui.Graphics": "7.0.86",
           "Microsoft.WindowsAppSDK": "1.2.221209.1"
         }
       },
