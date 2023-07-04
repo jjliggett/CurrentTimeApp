@@ -5,7 +5,7 @@
 
 <h1><b>Current Time</b></h1>
 
-<p style="width: 80%">According to your computer, the current Universal Time Coordinated (UTC) is @utcNow.ToLongTimeString() on @utcNow.ToLongDateString(). This is also called Universal Time and Universal Coordinated Time, and is equivalent to Greenwich Mean Time (GMT).</p>
+<p style="width: 80%">According to your computer, the current Universal Time Coordinated (UTC) is @utcNow.ToLongTimeString() on @utcNow.ToLongDateString(). This is also called Universal Time and Universal Coordinated Time, and is equivalent to Greenwich Mean Time (GMT). The current <span title="the number of seconds since midnight January 1, 1970 UTC">Unix timestamp</span> is <code>@DateTimeOffset.UtcNow.ToUnixTimeSeconds()</code>.</p>
 
 <p style="width: 80%">Also according to your computer, the current local time is @currentTime.ToLongTimeString() (@timeZoneName).</p>
 
