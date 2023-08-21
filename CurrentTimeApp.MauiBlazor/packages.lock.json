@@ -4,9 +4,9 @@
     "net7.0-android33.0": {
       "Microsoft.AspNetCore.Components.WebView.Maui": {
         "type": "Direct",
-        "requested": "[7.0.86, )",
-        "resolved": "7.0.86",
-        "contentHash": "a3FbXd2FOGq8q/jfj9KPmNwYaEQ+j02gy9xI1f7a7GncPRpvHu+pPQvChnHzjMaN1dZyczDwB8K7H5tI7zDNdg==",
+        "requested": "[7.0.92, )",
+        "resolved": "7.0.92",
+        "contentHash": "VsZEU0jAjQhcrZYLFkvpL4clCy41V3OW2ShBJd94ERS1CkjhOQGE9c1lRtgoOCaK/tq6o2U0sELuTFLwqSqiEg==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "7.0.0",
           "Microsoft.AspNetCore.Components.WebView": "7.0.0",
@@ -63,9 +63,9 @@
       },
       "Microsoft.Maui.Graphics": {
         "type": "Direct",
-        "requested": "[7.0.86, )",
-        "resolved": "7.0.86",
-        "contentHash": "v0VB9NhVrJarOzl7BHs2LaFQE+syKQ8o1Wbs+I4CGxmQO4cosmoFPUa0ogp1oaJe8Tazu504+P8JDy8fhDsSKQ=="
+        "requested": "[7.0.92, )",
+        "resolved": "7.0.92",
+        "contentHash": "fe9pKhm5LZGsAbEZQg7VEHGer76h8m8VPkGRWJ4P0+3QMu3yXOYmOiA60Wskjk8Mrd6eXZCQUWTTeley1agYQg=="
       },
       "Xamarin.Android.Glide": {
         "type": "Direct",
@@ -1190,9 +1190,9 @@
     "net7.0-ios16.1": {
       "Microsoft.AspNetCore.Components.WebView.Maui": {
         "type": "Direct",
-        "requested": "[7.0.86, )",
-        "resolved": "7.0.86",
-        "contentHash": "a3FbXd2FOGq8q/jfj9KPmNwYaEQ+j02gy9xI1f7a7GncPRpvHu+pPQvChnHzjMaN1dZyczDwB8K7H5tI7zDNdg==",
+        "requested": "[7.0.92, )",
+        "resolved": "7.0.92",
+        "contentHash": "VsZEU0jAjQhcrZYLFkvpL4clCy41V3OW2ShBJd94ERS1CkjhOQGE9c1lRtgoOCaK/tq6o2U0sELuTFLwqSqiEg==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "7.0.0",
           "Microsoft.AspNetCore.Components.WebView": "7.0.0",
@@ -1249,9 +1249,9 @@
       },
       "Microsoft.Maui.Graphics": {
         "type": "Direct",
-        "requested": "[7.0.86, )",
-        "resolved": "7.0.86",
-        "contentHash": "v0VB9NhVrJarOzl7BHs2LaFQE+syKQ8o1Wbs+I4CGxmQO4cosmoFPUa0ogp1oaJe8Tazu504+P8JDy8fhDsSKQ=="
+        "requested": "[7.0.92, )",
+        "resolved": "7.0.92",
+        "contentHash": "fe9pKhm5LZGsAbEZQg7VEHGer76h8m8VPkGRWJ4P0+3QMu3yXOYmOiA60Wskjk8Mrd6eXZCQUWTTeley1agYQg=="
       },
       "Microsoft.AspNetCore.Authorization": {
         "type": "Transitive",
@@ -1520,9 +1520,9 @@
     "net7.0-maccatalyst16.1": {
       "Microsoft.AspNetCore.Components.WebView.Maui": {
         "type": "Direct",
-        "requested": "[7.0.86, )",
-        "resolved": "7.0.86",
-        "contentHash": "a3FbXd2FOGq8q/jfj9KPmNwYaEQ+j02gy9xI1f7a7GncPRpvHu+pPQvChnHzjMaN1dZyczDwB8K7H5tI7zDNdg==",
+        "requested": "[7.0.92, )",
+        "resolved": "7.0.92",
+        "contentHash": "VsZEU0jAjQhcrZYLFkvpL4clCy41V3OW2ShBJd94ERS1CkjhOQGE9c1lRtgoOCaK/tq6o2U0sELuTFLwqSqiEg==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "7.0.0",
           "Microsoft.AspNetCore.Components.WebView": "7.0.0",
@@ -1579,9 +1579,9 @@
       },
       "Microsoft.Maui.Graphics": {
         "type": "Direct",
-        "requested": "[7.0.86, )",
-        "resolved": "7.0.86",
-        "contentHash": "v0VB9NhVrJarOzl7BHs2LaFQE+syKQ8o1Wbs+I4CGxmQO4cosmoFPUa0ogp1oaJe8Tazu504+P8JDy8fhDsSKQ=="
+        "requested": "[7.0.92, )",
+        "resolved": "7.0.92",
+        "contentHash": "fe9pKhm5LZGsAbEZQg7VEHGer76h8m8VPkGRWJ4P0+3QMu3yXOYmOiA60Wskjk8Mrd6eXZCQUWTTeley1agYQg=="
       },
       "Microsoft.AspNetCore.Authorization": {
         "type": "Transitive",
@@ -1850,9 +1850,9 @@
     "net7.0-windows10.0.19041": {
       "Microsoft.AspNetCore.Components.WebView.Maui": {
         "type": "Direct",
-        "requested": "[7.0.86, )",
-        "resolved": "7.0.86",
-        "contentHash": "a3FbXd2FOGq8q/jfj9KPmNwYaEQ+j02gy9xI1f7a7GncPRpvHu+pPQvChnHzjMaN1dZyczDwB8K7H5tI7zDNdg==",
+        "requested": "[7.0.92, )",
+        "resolved": "7.0.92",
+        "contentHash": "VsZEU0jAjQhcrZYLFkvpL4clCy41V3OW2ShBJd94ERS1CkjhOQGE9c1lRtgoOCaK/tq6o2U0sELuTFLwqSqiEg==",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "7.0.0",
           "Microsoft.AspNetCore.Components.WebView": "7.0.0",
@@ -1909,26 +1909,21 @@
       },
       "Microsoft.Maui.Graphics": {
         "type": "Direct",
-        "requested": "[7.0.86, )",
-        "resolved": "7.0.86",
-        "contentHash": "v0VB9NhVrJarOzl7BHs2LaFQE+syKQ8o1Wbs+I4CGxmQO4cosmoFPUa0ogp1oaJe8Tazu504+P8JDy8fhDsSKQ=="
+        "requested": "[7.0.92, )",
+        "resolved": "7.0.92",
+        "contentHash": "fe9pKhm5LZGsAbEZQg7VEHGer76h8m8VPkGRWJ4P0+3QMu3yXOYmOiA60Wskjk8Mrd6eXZCQUWTTeley1agYQg=="
       },
       "Microsoft.Maui.Graphics.Win2D.WinUI.Desktop": {
         "type": "Direct",
-        "requested": "[7.0.86, )",
-        "resolved": "7.0.86",
-        "contentHash": "o9nXvM81cu9PbdDBFcybMyM2hIgb0a8CLu3ZwD0cJrI01ujLoltwkqmlvOrVxgAwL9RvoLIjN51WFjPwvbPrkw==",
+        "requested": "[7.0.92, )",
+        "resolved": "7.0.92",
+        "contentHash": "4snL9nMCGIzZ6utx8T8X42k3TjaA1PZY7Mpr1/LFyvxanja4f+zWroierjBCciBNoz8Zb0RJEMxxpr16SUcRGw==",
         "dependencies": {
-          "Microsoft.Graphics.Win2D": "1.0.4",
-          "Microsoft.Maui.Graphics": "7.0.86",
+          "Microsoft.Graphics.Win2D": "1.0.5.1",
+          "Microsoft.Maui.Graphics": "7.0.92",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22621.756",
           "Microsoft.WindowsAppSDK": "1.2.221209.1"
         }
-      },
-      "Microsoft.Windows.SDK.BuildTools": {
-        "type": "Direct",
-        "requested": "[10.0.22621.755, )",
-        "resolved": "10.0.22621.755",
-        "contentHash": "zGXDCZc2/slVjpNtopNETCjnOqH9KiEdo9dPCcjtNWwK5W+EmOcEn7X5Ftj3tOE9kLvroga1s7WwLh2a5jQEEg=="
       },
       "Microsoft.WindowsAppSDK": {
         "type": "Direct",
@@ -2111,8 +2106,8 @@
       },
       "Microsoft.Graphics.Win2D": {
         "type": "Transitive",
-        "resolved": "1.0.4",
-        "contentHash": "PmUO0B+gLdbxy1XCmX6pS57SL08roPKZC3sXKSRH4Qa1nX5RKwIdmmIxSvmV9irN57ABSMtDtWa+qNYnyzB/nw==",
+        "resolved": "1.0.5.1",
+        "contentHash": "9DVEVvyQWWz8kqhsFBAx9Zv4KRIAcmxuT7kFpK1Fgh6czSiMB+CQW0DlhZXT44Mtv41FRXG47lhEv+7a2YyiLA==",
         "dependencies": {
           "Microsoft.WindowsAppSDK": "1.0.4"
         }
@@ -2130,6 +2125,11 @@
           "Microsoft.Extensions.Primitives": "2.2.0",
           "System.Buffers": "4.5.0"
         }
+      },
+      "Microsoft.Windows.SDK.BuildTools": {
+        "type": "Transitive",
+        "resolved": "10.0.22621.756",
+        "contentHash": "7ZL2sFSioYm1Ry067Kw1hg0SCcW5kuVezC2SwjGbcPE61Nn+gTbH86T73G3LcEOVj0S3IZzNuE/29gZvOLS7VA=="
       },
       "System.Buffers": {
         "type": "Transitive",
@@ -2174,8 +2174,8 @@
       },
       "Microsoft.Graphics.Win2D": {
         "type": "Transitive",
-        "resolved": "1.0.4",
-        "contentHash": "PmUO0B+gLdbxy1XCmX6pS57SL08roPKZC3sXKSRH4Qa1nX5RKwIdmmIxSvmV9irN57ABSMtDtWa+qNYnyzB/nw==",
+        "resolved": "1.0.5.1",
+        "contentHash": "9DVEVvyQWWz8kqhsFBAx9Zv4KRIAcmxuT7kFpK1Fgh6czSiMB+CQW0DlhZXT44Mtv41FRXG47lhEv+7a2YyiLA==",
         "dependencies": {
           "Microsoft.WindowsAppSDK": "1.0.4"
         }
@@ -2198,8 +2198,8 @@
       },
       "Microsoft.Graphics.Win2D": {
         "type": "Transitive",
-        "resolved": "1.0.4",
-        "contentHash": "PmUO0B+gLdbxy1XCmX6pS57SL08roPKZC3sXKSRH4Qa1nX5RKwIdmmIxSvmV9irN57ABSMtDtWa+qNYnyzB/nw==",
+        "resolved": "1.0.5.1",
+        "contentHash": "9DVEVvyQWWz8kqhsFBAx9Zv4KRIAcmxuT7kFpK1Fgh6czSiMB+CQW0DlhZXT44Mtv41FRXG47lhEv+7a2YyiLA==",
         "dependencies": {
           "Microsoft.WindowsAppSDK": "1.0.4"
         }
@@ -2222,8 +2222,8 @@
       },
       "Microsoft.Graphics.Win2D": {
         "type": "Transitive",
-        "resolved": "1.0.4",
-        "contentHash": "PmUO0B+gLdbxy1XCmX6pS57SL08roPKZC3sXKSRH4Qa1nX5RKwIdmmIxSvmV9irN57ABSMtDtWa+qNYnyzB/nw==",
+        "resolved": "1.0.5.1",
+        "contentHash": "9DVEVvyQWWz8kqhsFBAx9Zv4KRIAcmxuT7kFpK1Fgh6czSiMB+CQW0DlhZXT44Mtv41FRXG47lhEv+7a2YyiLA==",
         "dependencies": {
           "Microsoft.WindowsAppSDK": "1.0.4"
         }
@@ -2246,8 +2246,8 @@
       },
       "Microsoft.Graphics.Win2D": {
         "type": "Transitive",
-        "resolved": "1.0.4",
-        "contentHash": "PmUO0B+gLdbxy1XCmX6pS57SL08roPKZC3sXKSRH4Qa1nX5RKwIdmmIxSvmV9irN57ABSMtDtWa+qNYnyzB/nw==",
+        "resolved": "1.0.5.1",
+        "contentHash": "9DVEVvyQWWz8kqhsFBAx9Zv4KRIAcmxuT7kFpK1Fgh6czSiMB+CQW0DlhZXT44Mtv41FRXG47lhEv+7a2YyiLA==",
         "dependencies": {
           "Microsoft.WindowsAppSDK": "1.0.4"
         }
@@ -2270,8 +2270,8 @@
       },
       "Microsoft.Graphics.Win2D": {
         "type": "Transitive",
-        "resolved": "1.0.4",
-        "contentHash": "PmUO0B+gLdbxy1XCmX6pS57SL08roPKZC3sXKSRH4Qa1nX5RKwIdmmIxSvmV9irN57ABSMtDtWa+qNYnyzB/nw==",
+        "resolved": "1.0.5.1",
+        "contentHash": "9DVEVvyQWWz8kqhsFBAx9Zv4KRIAcmxuT7kFpK1Fgh6czSiMB+CQW0DlhZXT44Mtv41FRXG47lhEv+7a2YyiLA==",
         "dependencies": {
           "Microsoft.WindowsAppSDK": "1.0.4"
         }
@@ -2294,8 +2294,8 @@
       },
       "Microsoft.Graphics.Win2D": {
         "type": "Transitive",
-        "resolved": "1.0.4",
-        "contentHash": "PmUO0B+gLdbxy1XCmX6pS57SL08roPKZC3sXKSRH4Qa1nX5RKwIdmmIxSvmV9irN57ABSMtDtWa+qNYnyzB/nw==",
+        "resolved": "1.0.5.1",
+        "contentHash": "9DVEVvyQWWz8kqhsFBAx9Zv4KRIAcmxuT7kFpK1Fgh6czSiMB+CQW0DlhZXT44Mtv41FRXG47lhEv+7a2YyiLA==",
         "dependencies": {
           "Microsoft.WindowsAppSDK": "1.0.4"
         }
@@ -2318,8 +2318,8 @@
       },
       "Microsoft.Graphics.Win2D": {
         "type": "Transitive",
-        "resolved": "1.0.4",
-        "contentHash": "PmUO0B+gLdbxy1XCmX6pS57SL08roPKZC3sXKSRH4Qa1nX5RKwIdmmIxSvmV9irN57ABSMtDtWa+qNYnyzB/nw==",
+        "resolved": "1.0.5.1",
+        "contentHash": "9DVEVvyQWWz8kqhsFBAx9Zv4KRIAcmxuT7kFpK1Fgh6czSiMB+CQW0DlhZXT44Mtv41FRXG47lhEv+7a2YyiLA==",
         "dependencies": {
           "Microsoft.WindowsAppSDK": "1.0.4"
         }
