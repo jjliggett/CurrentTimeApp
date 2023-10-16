@@ -4,22 +4,22 @@
     "net7.0": {
       "Microsoft.AspNetCore.Components.WebAssembly": {
         "type": "Direct",
-        "requested": "[7.0.11, )",
-        "resolved": "7.0.11",
-        "contentHash": "eDEPI79qnJvUNwJPCIjbjpZOGU8pdGZd1L/b6nkZR7iGJEilnNTjbEnmnsBUyPhJt7un2Y7St9QgdX34Wb7SFg==",
+        "requested": "[7.0.12, )",
+        "resolved": "7.0.12",
+        "contentHash": "o3mTESQG5iWHglEpLdccUYi0p3mBaetvWeVBj0oC1AytJwYC0/Nvk2k9gavkIYzKGC3hBU8ugCnFxzfxp4MsWw==",
         "dependencies": {
-          "Microsoft.AspNetCore.Components.Web": "7.0.11",
+          "Microsoft.AspNetCore.Components.Web": "7.0.12",
           "Microsoft.Extensions.Configuration.Binder": "7.0.4",
           "Microsoft.Extensions.Configuration.Json": "7.0.0",
           "Microsoft.Extensions.Logging": "7.0.0",
-          "Microsoft.JSInterop.WebAssembly": "7.0.11"
+          "Microsoft.JSInterop.WebAssembly": "7.0.12"
         }
       },
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
         "type": "Direct",
-        "requested": "[7.0.11, )",
-        "resolved": "7.0.11",
-        "contentHash": "DoDaOIQQbFeM+VegulQa/r45rwA5k47ooeT696zMSu8KwF+FFps33t6LHC3k6LV6Qv5ZgPXkJPVm33ebJFr4pg=="
+        "requested": "[7.0.12, )",
+        "resolved": "7.0.12",
+        "contentHash": "eeR4zfAWn+oW/KWdsdRtELjrKoodWlammA6zeXNcx7kZHzIyZhWKDsp3wDTRih0kJVbB+pjaoZP83VySr3B+ZQ=="
       },
       "Microsoft.AspNetCore.WebUtilities": {
         "type": "Direct",
@@ -33,52 +33,52 @@
       },
       "Microsoft.AspNetCore.Authorization": {
         "type": "Transitive",
-        "resolved": "7.0.11",
-        "contentHash": "3zCVWaDXNO7o8mjzOoIwfB8yYqV3+t4rLp+/dB4Db4BbUKS1MK2mnXBiDST6s1QaVMEuEz+pXv58JXeh3Pv7mw==",
+        "resolved": "7.0.12",
+        "contentHash": "z++ru5sKWIuYXhrrlIAOfRqeLtULY6RvjHLKVF5AP7zMmc/VK3WmQAbyno7VVqVojVtL5WDJ4z/+n5W8zMweqw==",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "7.0.11",
+          "Microsoft.AspNetCore.Metadata": "7.0.12",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
           "Microsoft.Extensions.Options": "7.0.1"
         }
       },
       "Microsoft.AspNetCore.Components": {
         "type": "Transitive",
-        "resolved": "7.0.11",
-        "contentHash": "+BbcKgUUrsdt9cu5XyVmTR3BpYKoPUbGYU8VNmG36+K8jkm82z4cIu5q0AOGINEIfiNfY+Pd9uqT/MnUeTC0YQ==",
+        "resolved": "7.0.12",
+        "contentHash": "Msw7ZyFKVbELEh6rsTG+LxlTJUxYgvkG7Zs5vx5cD4PTUcbxfNQoqexmLS1nikHwP2XGidkqwJIkrE8JU2IWZA==",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "7.0.11",
-          "Microsoft.AspNetCore.Components.Analyzers": "7.0.11"
+          "Microsoft.AspNetCore.Authorization": "7.0.12",
+          "Microsoft.AspNetCore.Components.Analyzers": "7.0.12"
         }
       },
       "Microsoft.AspNetCore.Components.Analyzers": {
         "type": "Transitive",
-        "resolved": "7.0.11",
-        "contentHash": "s6kRCZsUuPQraMgruPRAr3Tz9rX4JpISkfKjjyA7VE4epnEtV/6QFpl4VTIr5TlR4iQhpVUBZKoKMEEgKcVp7w=="
+        "resolved": "7.0.12",
+        "contentHash": "4KrR8km+lOTRUsNVe4pumHUNvJK7UQUzVSqhTYXTz/wwU+eQ9TJ7QZn8xcrcbFCz6PzoG5esviCRC31mHAWBSQ=="
       },
       "Microsoft.AspNetCore.Components.Forms": {
         "type": "Transitive",
-        "resolved": "7.0.11",
-        "contentHash": "XbyHFap4Mirqy0YgIl3g8qa+05IXDH0Kqtb74NvW1CPI3SC58LT7iM+wEKcB+lpW/R2Vx7Yz5x1SmaqziHT3aw==",
+        "resolved": "7.0.12",
+        "contentHash": "5hDY+3ygOGexxF4utjq04F9QzTZaztlgwIECTOfraHq2OogfJiwBl7RKkjA4uvUbtu03xW+HVO0f6suCv60Psg==",
         "dependencies": {
-          "Microsoft.AspNetCore.Components": "7.0.11"
+          "Microsoft.AspNetCore.Components": "7.0.12"
         }
       },
       "Microsoft.AspNetCore.Components.Web": {
         "type": "Transitive",
-        "resolved": "7.0.11",
-        "contentHash": "kUvwVcjYEdkajSSdXrgKgbdMfKERGp/Jg8KRaAMDm9ogH/Lia1C8McwbFHrixy0xAP3Zh5KUDEMgPuZeMWqqxQ==",
+        "resolved": "7.0.12",
+        "contentHash": "Wjil06HJWFecM9tUR+DQy5UGA9Qee2j0TXTaX5/CpGFkgg7jqhG47riSXJhGvH794ta3YoT5MiAjDFOmQMN5gg==",
         "dependencies": {
-          "Microsoft.AspNetCore.Components": "7.0.11",
-          "Microsoft.AspNetCore.Components.Forms": "7.0.11",
+          "Microsoft.AspNetCore.Components": "7.0.12",
+          "Microsoft.AspNetCore.Components.Forms": "7.0.12",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
-          "Microsoft.JSInterop": "7.0.11",
+          "Microsoft.JSInterop": "7.0.12",
           "System.IO.Pipelines": "7.0.0"
         }
       },
       "Microsoft.AspNetCore.Metadata": {
         "type": "Transitive",
-        "resolved": "7.0.11",
-        "contentHash": "G1sQeLED6V+KoPj/6f6dtMvSOskRs38fo79hOQmuEpt+JA1dvZM//c15Hk3rQ+qqQ2D80IGAdlet2u2zlV6OXw=="
+        "resolved": "7.0.12",
+        "contentHash": "m01ZO1o6br7XyQ7yMaoJkaBgL02sVVWgNpwGyLFxPVc8op/AVfw1yPbTeLkgBfDjUga52gbcxnMmPPk/Ahy+lQ=="
       },
       "Microsoft.Extensions.Configuration": {
         "type": "Transitive",
@@ -197,15 +197,15 @@
       },
       "Microsoft.JSInterop": {
         "type": "Transitive",
-        "resolved": "7.0.11",
-        "contentHash": "lLNuiZJFIr+mICaqyPBlDl6pVRnDEV2uhf5mjqxg/NpqFYq59ux9995fg4duL6ZgSsc3twbdLwROy1l4XvDxeQ=="
+        "resolved": "7.0.12",
+        "contentHash": "AJYoootrG2G5ugU+2oXfGVbb6nh8oams4vTznZQIwJEibaCyKi5Q/9oQuLFG5CWjGllTZeO4Baj3H5EORWnwpw=="
       },
       "Microsoft.JSInterop.WebAssembly": {
         "type": "Transitive",
-        "resolved": "7.0.11",
-        "contentHash": "lSrSTp9HJSezrQJo9eNuExI9J8dGd72q1Unnbnvnd9TvA/MGsbQGaqEC7/GsnTu1SGQrxwLrdYS/pTP/i6j3yA==",
+        "resolved": "7.0.12",
+        "contentHash": "LuWUnUiZj51smVDZx7x4XQrUZ37LGbpmiUT43oif0Jm/bQMvjF9iyw3Sk3bUfCSnOaql9Ut710BQ6S7fKyBRrA==",
         "dependencies": {
-          "Microsoft.JSInterop": "7.0.11"
+          "Microsoft.JSInterop": "7.0.12"
         }
       },
       "Microsoft.Net.Http.Headers": {
@@ -243,7 +243,7 @@
       "currenttimeapp.components": {
         "type": "Project",
         "dependencies": {
-          "Microsoft.AspNetCore.Components.Web": "[7.0.5, )",
+          "Microsoft.AspNetCore.Components.Web": "[7.0.12, )",
           "Microsoft.AspNetCore.WebUtilities": "[2.2.0, )"
         }
       }
