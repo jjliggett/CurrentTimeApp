@@ -27,7 +27,7 @@ jobs:
           fetch-depth: 0
       - name: Get version
         id: jjversion
-        uses: jjliggett/jjversion-action@0b330d88db5f9240f057ef162d896c95fb16631e
+        uses: jjliggett/jjversion-action@cdd4ff5348af819e6667bf4221076a5e278f8c95
       - name: Display jjversion outputs
         run: |
           echo "Major: ${{ steps.jjversion.outputs.major }}"
@@ -72,7 +72,7 @@ jobs:
           fetch-depth: 0
       - name: Get version
         id: jjversion
-        uses: jjliggett/jjversion-action@0b330d88db5f9240f057ef162d896c95fb16631e
+        uses: jjliggett/jjversion-action@cdd4ff5348af819e6667bf4221076a5e278f8c95
       - name: Display jjversion outputs
         run: |
           echo "Major: ${{ steps.jjversion.outputs.major }}"
@@ -173,7 +173,7 @@ jobs:
           fetch-depth: 0
       - name: Get version
         id: jjversion
-        uses: jjliggett/jjversion-action@0b330d88db5f9240f057ef162d896c95fb16631e
+        uses: jjliggett/jjversion-action@cdd4ff5348af819e6667bf4221076a5e278f8c95
       - name: Display jjversion outputs
         run: |
           echo "Major: ${{ steps.jjversion.outputs.major }}"
@@ -185,7 +185,7 @@ jobs:
       - run: git reset --soft HEAD~1
       - name: Get previous version from previous commit
         id: previousversion
-        uses: jjliggett/jjversion-action@0b330d88db5f9240f057ef162d896c95fb16631e
+        uses: jjliggett/jjversion-action@cdd4ff5348af819e6667bf4221076a5e278f8c95
       - run: echo "VERSION=$(echo ${{ steps.jjversion.outputs.majorMinorPatch }})" >> $GITHUB_ENV
       - run: echo "PREVIOUS_COMMIT_VERSION=$(echo ${{ steps.previousversion.outputs.majorMinorPatch }})" >> $GITHUB_ENV
       - name: Download build
