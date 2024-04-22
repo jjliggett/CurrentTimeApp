@@ -117,7 +117,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Download build
-        uses: actions/download-artifact@eaceaf801fd36c7dee90939fad912460b18a1ffe # v4.1.2
+        uses: actions/download-artifact@9c19ed7fe5d278cd354c7dfd5d3b88589c7e2395 # v4.1.6
         with:
           name: release
           path: release/
@@ -144,7 +144,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Download build
-        uses: actions/download-artifact@eaceaf801fd36c7dee90939fad912460b18a1ffe # v4.1.2
+        uses: actions/download-artifact@9c19ed7fe5d278cd354c7dfd5d3b88589c7e2395 # v4.1.6
         with:
           name: release
           path: release/
@@ -189,7 +189,7 @@ jobs:
       - run: echo "VERSION=$(echo ${{ steps.jjversion.outputs.majorMinorPatch }})" >> $GITHUB_ENV
       - run: echo "PREVIOUS_COMMIT_VERSION=$(echo ${{ steps.previousversion.outputs.majorMinorPatch }})" >> $GITHUB_ENV
       - name: Download build
-        uses: actions/download-artifact@eaceaf801fd36c7dee90939fad912460b18a1ffe # v4.1.2
+        uses: actions/download-artifact@9c19ed7fe5d278cd354c7dfd5d3b88589c7e2395 # v4.1.6
         with:
           name: android-release
           path: android-release/
