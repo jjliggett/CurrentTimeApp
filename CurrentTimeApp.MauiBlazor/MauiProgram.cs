@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CurrentTimeApp.Abstractions;
+using Microsoft.Extensions.Logging;
 
 namespace CurrentTimeApp.MauiBlazor;
 
@@ -17,9 +18,10 @@ public static class MauiProgram
         builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG
-        builder.Services.AddBlazorWebViewDeveloperTools();
-        builder.Logging.AddDebug();
+		builder.Services.AddBlazorWebViewDeveloperTools();
+		builder.Logging.AddDebug();
 #endif
+        builder.Services.AddSingleton<ITimeZoneQueryProvider, TimeZoneQueryProvider>();
 
         return builder.Build();
     }

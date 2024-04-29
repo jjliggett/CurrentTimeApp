@@ -3,7 +3,7 @@ using Android.Runtime;
 
 namespace CurrentTimeApp.MauiBlazor;
 [Application]
-public sealed class MainApplication : MauiApplication
+public class MainApplication : MauiApplication
 {
     public MainApplication(IntPtr handle, JniHandleOwnership ownership)
         : base(handle, ownership)

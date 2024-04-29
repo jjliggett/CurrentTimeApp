@@ -8,16 +8,8 @@ main {
     flex: 1;
 }
 
-@media (prefers-color-scheme: light) {
-    .sidebar {
-        background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .sidebar {
-        background-color: #2D2D2D;
-    }
+.sidebar {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
 
 .top-row {
@@ -45,17 +37,13 @@ main {
         }
 
 @media (max-width: 640.98px) {
-    .top-row:not(.auth) {
-        display: none;
-    }
-
-    .top-row.auth {
+    .top-row {
         justify-content: space-between;
     }
 
-    .top-row ::deep a, .top-row ::deep .btn-link {
-        margin-left: 0;
-    }
+        .top-row ::deep a, .top-row ::deep .btn-link {
+            margin-left: 0;
+        }
 }
 
 @media (min-width: 641px) {

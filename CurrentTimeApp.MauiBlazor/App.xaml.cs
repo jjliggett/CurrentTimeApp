@@ -1,4 +1,5 @@
-﻿namespace CurrentTimeApp.MauiBlazor;
+﻿
+namespace CurrentTimeApp.MauiBlazor;
 
 public partial class App : Application
 {
@@ -18,6 +19,6 @@ public partial class App : Application
             window.Title = "Current Time App";
         }
 
-        return window!;
+        return window;
     }
 }

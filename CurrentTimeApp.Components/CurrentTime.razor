@@ -1,7 +1,7 @@
 ﻿@using static System.TimeZoneInfo
-@using Microsoft.AspNetCore.WebUtilities
+@using CurrentTimeApp.Abstractions
 @using System.Text.RegularExpressions;
-@inject NavigationManager NavManager
+@inject ITimeZoneQueryProvider TimeZoneQueryProvider
 
 <h1><b>Current Time</b></h1>
 
@@ -102,27 +102,20 @@
         var utcNow = DateTime.UtcNow;
         var localTimeZone = TimeZoneInfo.Local;
 
-        var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
-
-        var queryValues = QueryHelpers.ParseQuery(uri.Query);
-
-        if (queryValues.TryGetValue("timeZone", out var timeZoneStringValues))
+        foreach (var tzs in TimeZoneQueryProvider.GetTimeZones())
         {
-            foreach (var tzs in timeZoneStringValues)
+            if (tzs is not null && localTimeZone.Id != tzs)
             {
-                if (tzs is not null && localTimeZone.Id != tzs)
-                {
-                    var zone = TimeZoneInfo.FindSystemTimeZoneById(tzs);
+                var zone = TimeZoneInfo.FindSystemTimeZoneById(tzs);
 
-                    if (zone is not null)
-                    {
-                        timeZoneTime.Add(new TimeZoneTime(
-                            timeZone: zone,
-                            currentTimeUtc: utcNow,
-                            doesDstMessageExist: false,
-                            dstMessage: ""
-                        ));
-                    }
+                if (zone is not null)
+                {
+                    timeZoneTime.Add(new TimeZoneTime(
+                    timeZone: zone,
+                    currentTimeUtc: utcNow,
+                    doesDstMessageExist: false,
+                    dstMessage: ""
+                ));
                 }
             }
         }

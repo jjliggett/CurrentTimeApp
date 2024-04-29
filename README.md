@@ -2,7 +2,7 @@
 
 Current Time App is an application to display the current time, as well as when day light savings time will start/end for supported platforms and regions.
 
-The application is a .NET 7 application. There is a web app using Blazor Web Assembly (published at <https://jjliggett.github.io/CurrentTimeApp/>) and there is also a .NET MAUI application.
+The application is a .NET 8 application. There is a web app using Blazor Web Assembly (published at <https://jjliggett.github.io/CurrentTimeApp/>) and there is also a .NET MAUI application.
 
 Additional time zones can be displayed, using the **timeZone** query parameter like the following: <https://jjliggett.github.io/CurrentTimeApp/?timeZone=Europe/London&timeZone=Europe/Paris>
 
