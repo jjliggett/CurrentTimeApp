@@ -14,10 +14,7 @@ public partial class App : Application
     {
         var window = base.CreateWindow(activationState);
 
-        if (window is not null)
-        {
-            window.Title = "Current Time App";
-        }
+        window.Title = "Current Time App";
 
         return window;
     }

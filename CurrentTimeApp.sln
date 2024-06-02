@@ -10,6 +10,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrentTimeApp", "CurrentTi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9A2B94F-7E1E-4BE9-8F0F-69D87AC8F6DF}"
 	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 		versioning.yaml = versioning.yaml
@@ -25,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github-workflows", ".githu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrentTimeApp.Abstractions", "CurrentTimeApp.Abstractions\CurrentTimeApp.Abstractions.csproj", "{CD3D15C6-3AA8-4392-AB55-13E053DBA1E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrentTimeApp.MauiBlazor", "CurrentTimeApp.MauiBlazor\CurrentTimeApp.MauiBlazor.csproj", "{82B176F5-98F0-4CCB-B271-7E928013E1C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrentTimeApp.MauiBlazor", "CurrentTimeApp.MauiBlazor\CurrentTimeApp.MauiBlazor.csproj", "{82B176F5-98F0-4CCB-B271-7E928013E1C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +42,6 @@ Global
 		{93ABE5D5-0917-4865-AEE9-53103226C811}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93ABE5D5-0917-4865-AEE9-53103226C811}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93ABE5D5-0917-4865-AEE9-53103226C811}.Release|Any CPU.Build.0 = Release|Any CPU
-		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{164A610C-F448-43F1-AFA6-0B3FDB8E8FE6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{CD3D15C6-3AA8-4392-AB55-13E053DBA1E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CD3D15C6-3AA8-4392-AB55-13E053DBA1E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD3D15C6-3AA8-4392-AB55-13E053DBA1E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
