@@ -55,7 +55,7 @@ jobs:
         run: touch release/wwwroot/.nojekyll
       - run: cp release/wwwroot/index.html release/wwwroot/404.html
       - name: Upload release.zip
-        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4.3.4
         with:
           name: release
           path: release/
@@ -99,7 +99,7 @@ jobs:
         run: dotnet publish --no-restore -c Release -o android-release -f net8.0-android CurrentTimeApp.MauiBlazor/CurrentTimeApp.MauiBlazor.csproj
       - run: ls -R
       - name: Upload release.zip
-        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4.3.4
         with:
           name: android-release
           path: android-release/
