@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "CurrentTimeApp",
   "resources": {
-    "hash": "sha256-OPgpvNTP/hEL+28Yk+IOVOr7quee2KWT3aq2fEEPrMg=",
+    "hash": "sha256-DFyEdDlOceEiEyZHpbOpMOQdeIUsZNME0EfewIO1aWc=",
     "jsModuleNative": {
       "dotnet.native.8.0.6.suuomc2hr0.js": "sha256-YU6M9+jtDVnB8/wtrgIndOstzNh778Ls8g9XnbjorSk="
     },
@@ -17,9 +17,9 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "CurrentTimeApp.Abstractions.wasm": "sha256-ICp6uQenk3T1zMMVF2tUtd8LzO1r3kTaEnrvjK1WmwA=",
-      "CurrentTimeApp.Components.wasm": "sha256-sxsKZpyFmEl5J0Vr76IjmBvqLighXTjqAQvhVDqn2pc=",
-      "CurrentTimeApp.wasm": "sha256-HmbqeqxSnXxWzpT2+oeAvli233KvNnv9oJIrwJuC9PY=",
+      "CurrentTimeApp.Abstractions.wasm": "sha256-BTRs25irY3pQBUsCKuVoQvB4pa91z3Yp72usnbdw3YM=",
+      "CurrentTimeApp.Components.wasm": "sha256-+yKRiUqzTxYNqW6QHZH6RYVq/djwTrZ/P+GGab6Uk98=",
+      "CurrentTimeApp.wasm": "sha256-Mmz7elsmfmdL9rfH7Wk9i+DR84kyMpLmnjIaPoavcmo=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-HjDGGminMNwfrY2e3hrFGK3MVX+3Re7Yr5oRzG/se6A=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-4tmx4uC98MyKjCuM9ErBZwXpqkLx4fwVZfJQIv+Y0+A=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-LYJGTqka6p2RaQhwjm0nbX5muzjO6rM8oTE9uoUmGBs=",
