@@ -60,7 +60,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@6bd8b7f7774af54e05809fcc5431931b3eb1ddee
       with:
-        dotnet-version: 8.0.303
+        dotnet-version: 8.0.401
     - name: Restore web dependencies
       run: dotnet restore --locked-mode CurrentTimeApp/CurrentTimeApp.csproj
     - name: Build web
@@ -107,7 +107,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@6bd8b7f7774af54e05809fcc5431931b3eb1ddee
       with:
-        dotnet-version: 8.0.303
+        dotnet-version: 8.0.401
     - name: Install dotnet maui workload
       run: dotnet workload install maui --source https://api.nuget.org/v3/index.json
     - name: Install dotnet maui-android workload to build application
