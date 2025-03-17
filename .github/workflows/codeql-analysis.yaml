@@ -58,7 +58,7 @@ jobs:
         # queries: security-extended,security-and-quality
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@3e891b0cb619bf60e2c25674b222b8940e2c1c25
+      uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9
       with:
         dotnet-version: 8.0.403
     - name: Restore web dependencies
@@ -105,7 +105,7 @@ jobs:
         # queries: security-extended,security-and-quality
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@3e891b0cb619bf60e2c25674b222b8940e2c1c25
+      uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9
       with:
         dotnet-version: 8.0.403
     - name: Install dotnet maui workload
