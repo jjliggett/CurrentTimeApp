@@ -1,4 +1,4 @@
-﻿# For most projects, this workflow file will not need changing; you simply need
+# For most projects, this workflow file will not need changing; you simply need
 # to commit it to your repository.
 #
 # You may wish to alter this file to override the set of languages analyzed,
@@ -58,7 +58,7 @@ jobs:
         # queries: security-extended,security-and-quality
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@3e891b0cb619bf60e2c25674b222b8940e2c1c25
+      uses: actions/setup-dotnet@baa11fbfe1d6520db94683bd5c7a3818018e4309
       with:
         dotnet-version: 8.0.403
     - name: Restore web dependencies
@@ -105,7 +105,7 @@ jobs:
         # queries: security-extended,security-and-quality
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@3e891b0cb619bf60e2c25674b222b8940e2c1c25
+      uses: actions/setup-dotnet@baa11fbfe1d6520db94683bd5c7a3818018e4309
       with:
         dotnet-version: 8.0.403
     - name: Install dotnet maui workload
